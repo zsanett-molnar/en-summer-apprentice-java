@@ -30,4 +30,9 @@ public class OrderController {
     public List<Order> getCustomer() {
         return orderService.getOrders();
     }
+
+    @GetMapping("/order/getOrdersByCustomer")
+    public List<Order> getOrdersByCustomer() {
+        return orderService.getOrderByCustomerID(3);
+    }
 }

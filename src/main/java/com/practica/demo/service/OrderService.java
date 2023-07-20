@@ -29,4 +29,8 @@ public class OrderService {
     public Order addOrder(Order order) {
         return orderRepository.save(order);
     }
+
+    public List<Order> getOrderByCustomerID(int id) {
+        return orderRepository.findAllByCustomer_UserID(id);
+    }
 }

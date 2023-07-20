@@ -1,12 +1,10 @@
 package com.practica.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+
 
 @Entity(name = "orders")
 @Table(name = "orders", schema = "practica")
@@ -16,8 +14,12 @@ public class Order {
     @Column(name="orderID", nullable = false, updatable = false)
     private Integer orderID;
 
-    @Column(name="userID")
-    private Integer userID;
+    @ManyToOne
+    @JoinColumn(name="userID")
+    private Customer customer;
+
+//    @Column(name="userID")
+//    private Integer userID;
 
     @Column(name="ticketCategoryID")
     private Integer ticketCategoryID;
@@ -31,15 +33,6 @@ public class Order {
     @Column(name="totalPrice")
     private BigDecimal totalPrice;
 
-    public Order(Integer orderID, Integer userID, Integer ticketCategoryID, Date orderedAt, Integer numberOfTickets, BigDecimal totalPrice) {
-        this.orderID = orderID;
-        this.userID = userID;
-        this.ticketCategoryID = ticketCategoryID;
-        this.orderedAt = orderedAt;
-        this.numberOfTickets = numberOfTickets;
-        this.totalPrice = totalPrice;
-    }
-
     public Order() {
 
     }
@@ -52,12 +45,12 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Integer getTicketCategoryID() {

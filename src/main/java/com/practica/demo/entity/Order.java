@@ -32,7 +32,7 @@ public class Order {
     private Integer numberOfTickets;
 
     @Column(name="totalPrice")
-    private BigDecimal totalPrice;
+    private Long totalPrice;
 
     public Order() {
 
@@ -78,11 +78,20 @@ public class Order {
         this.numberOfTickets = numberOfTickets;
     }
 
-    public BigDecimal getTotalPrice() {
+    public Long getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(Long totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public Order(Integer orderID, Customer customer, TicketCategory ticketCategoryID, Date orderedAt, Integer numberOfTickets, Long totalPrice) {
+        this.orderID = orderID;
+        this.customer = customer;
+        this.ticketCategoryID = ticketCategoryID;
+        this.orderedAt = orderedAt;
+        this.numberOfTickets = numberOfTickets;
         this.totalPrice = totalPrice;
     }
 }

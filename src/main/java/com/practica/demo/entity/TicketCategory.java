@@ -1,9 +1,6 @@
 package com.practica.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
@@ -15,14 +12,15 @@ public class TicketCategory {
     @Column(name="ticketCategoryID", nullable = false, updatable = false)
     private Integer ticketCategoryID;
 
-    @Column(name="eventID")
-    private Integer eventID;
+    @ManyToOne
+    @JoinColumn(name="eventID")
+    private Event eventID;
 
     @Column(name="description")
     private String description;
 
     @Column(name = "price")
-    private BigDecimal price;
+    private Long price;
 
     public TicketCategory() {
 
@@ -36,11 +34,11 @@ public class TicketCategory {
         this.ticketCategoryID = ticketCategoryID;
     }
 
-    public Integer getEventID() {
+    public Event getEventID() {
         return eventID;
     }
 
-    public void setEventID(Integer eventID) {
+    public void setEventID(Event eventID) {
         this.eventID = eventID;
     }
 
@@ -52,11 +50,11 @@ public class TicketCategory {
         this.description = description;
     }
 
-    public BigDecimal getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 

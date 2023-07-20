@@ -2,6 +2,7 @@ package com.practica.demo.controller;
 
 import com.practica.demo.entity.Customer;
 import com.practica.demo.entity.Order;
+import com.practica.demo.entity.OrderDTO;
 import com.practica.demo.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,11 @@ public class OrderController {
     @PostMapping("/order/addOrder")
     public Order insertOrder(@RequestBody Order order) {
         return orderService.addOrder(order);
+    }
+
+    @PostMapping("/order/addNewOrder")
+    public Order insertNewOrder(@RequestBody OrderDTO dto) {
+        return orderService.addOrder(dto);
     }
 
     @GetMapping("/order/{orderID}")

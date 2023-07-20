@@ -1,11 +1,21 @@
 package com.practica.demo.entity;
 
+import jakarta.persistence.*;
+
+@Entity(name="venue")
+@Table(name="venue", schema="practica")
 public class Venue {
 
+    @Id
+    @Column(name="venueID", nullable = false, updatable = false)
     private Integer venueID;
+
+    @Column(name="location")
     private String location;
 
+    @Column(name="type")
     private String type;
+    @Column(name="capacity")
     private Integer capacity;
 
     public Venue(Integer venueID, String location, String type, Integer capacity) {
@@ -14,6 +24,10 @@ public class Venue {
         this.type = type;
         this.capacity = capacity;
         System.out.println("Creating venue");
+    }
+
+    public Venue() {
+
     }
 
     public Integer getVenueID() {

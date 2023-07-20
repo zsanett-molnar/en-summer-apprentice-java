@@ -1,11 +1,8 @@
 package com.practica.demo.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
-
+import com.practica.demo.entity.EventType;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
@@ -15,11 +12,13 @@ public class Event {
     @Id
     @Column(name="eventID", nullable = false, updatable = false)
     private Integer eventID;
-    @Column(name="locationID")
-    private Integer locationID;
+    @ManyToOne
+    @JoinColumn(name="locationID")
+    private Venue locationID;
 
-    @Column(name="eventTypeID")
-    private Integer eventTypeID;
+    @ManyToOne
+    @JoinColumn(name="eventTypeID")
+    private EventType eventTypeID;
 
     @Column(name="name")
     private String name;
@@ -32,15 +31,7 @@ public class Event {
     @Column(name="endDate")
     private Date endDate;
 
-    public Event(Integer eventID, Integer locationID, Integer eventTypeID, String name, String description, Date startDate, Date endDate) {
-        this.eventID = eventID;
-        this.locationID = locationID;
-        this.eventTypeID = eventTypeID;
-        this.name = name;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
+
     public Event() {
 
     }
@@ -53,19 +44,19 @@ public class Event {
         this.eventID = eventID;
     }
 
-    public Integer getLocationID() {
+    public Venue getLocationID() {
         return locationID;
     }
 
-    public void setLocationID(Integer locationID) {
+    public void setLocationID(Venue locationID) {
         this.locationID = locationID;
     }
 
-    public Integer getEventTypeID() {
+    public EventType getEventTypeID() {
         return eventTypeID;
     }
 
-    public void setEventTypeID(Integer eventTypeID) {
+    public void setEventTypeID(EventType eventTypeID) {
         this.eventTypeID = eventTypeID;
     }
 

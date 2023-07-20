@@ -4,6 +4,9 @@ import com.practica.demo.entity.Customer;
 import com.practica.demo.entity.Event;
 import com.practica.demo.entity.Venue;
 import com.practica.demo.service.EventService;
+import com.practica.demo.service.VenueService;
+import jakarta.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +15,11 @@ import java.util.Optional;
 @RestController
 public class EventController {
 
+    @Autowired
     private EventService eventService;
+
+    @Autowired
+    private VenueService venueService;
 
     public EventController(EventService eventService) {
         this.eventService = eventService;
@@ -32,5 +39,10 @@ public class EventController {
     @PostMapping("/event/addEvent")
     public Event insertEvent(@RequestBody Event event) {
         return eventService.addEvent(event);
+    }
+
+    @GetMapping("/events")
+    public List<Event> getSomeEvents(@RequestParam String eventType, @RequestParam Integer venueID) {
+        return eventService.getSomeEvents(eventType, venueID);
     }
 }

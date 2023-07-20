@@ -18,11 +18,12 @@ public class Order {
     @JoinColumn(name="userID")
     private Customer customer;
 
-//    @Column(name="userID")
-//    private Integer userID;
+//    @Column(name="ticketCategoryID")
+//    private Integer ticketCategoryID;
 
-    @Column(name="ticketCategoryID")
-    private Integer ticketCategoryID;
+    @ManyToOne
+    @JoinColumn(name="ticketCategoryID")
+    private TicketCategory ticketCategoryID;
 
     @Column(name="orderedAt")
     private Date orderedAt;
@@ -35,6 +36,14 @@ public class Order {
 
     public Order() {
 
+    }
+
+    public TicketCategory getTicketCategoryID() {
+        return ticketCategoryID;
+    }
+
+    public void setTicketCategoryID(TicketCategory ticketCategoryID) {
+        this.ticketCategoryID = ticketCategoryID;
     }
 
     public Integer getOrderID() {
@@ -51,14 +60,6 @@ public class Order {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Integer getTicketCategoryID() {
-        return ticketCategoryID;
-    }
-
-    public void setTicketCategoryID(Integer ticketCategoryID) {
-        this.ticketCategoryID = ticketCategoryID;
     }
 
     public Date getOrderedAt() {

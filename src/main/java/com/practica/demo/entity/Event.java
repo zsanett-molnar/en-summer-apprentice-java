@@ -1,18 +1,35 @@
 package com.practica.demo.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
+@Entity(name="event")
+@Table(name="event", schema="practica")
 public class Event {
-
+    @Id
+    @Column(name="eventID", nullable = false, updatable = false)
     private Integer eventID;
+    @Column(name="locationID")
     private Integer locationID;
+
+    @Column(name="eventTypeID")
     private Integer eventTypeID;
+
+    @Column(name="name")
     private String name;
+
+    @Column(name="description")
     private String description;
+    @Column(name="startDate")
     private Date startDate;
+
+    @Column(name="endDate")
     private Date endDate;
 
     public Event(Integer eventID, Integer locationID, Integer eventTypeID, String name, String description, Date startDate, Date endDate) {
@@ -23,6 +40,9 @@ public class Event {
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+    public Event() {
+
     }
 
     public Integer getEventID() {

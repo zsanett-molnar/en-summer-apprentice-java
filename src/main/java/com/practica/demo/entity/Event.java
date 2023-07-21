@@ -1,10 +1,8 @@
 package com.practica.demo.entity;
 
 import jakarta.persistence.*;
-import org.springframework.format.annotation.DateTimeFormat;
-import com.practica.demo.entity.EventType;
+
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 @Entity(name="event")
 @Table(name="event", schema="practica")

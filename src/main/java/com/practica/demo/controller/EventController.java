@@ -2,6 +2,7 @@ package com.practica.demo.controller;
 
 import com.practica.demo.entity.Customer;
 import com.practica.demo.entity.Event;
+import com.practica.demo.entity.EventDTO;
 import com.practica.demo.entity.Venue;
 import com.practica.demo.service.EventService;
 import com.practica.demo.service.VenueService;
@@ -42,7 +43,15 @@ public class EventController {
     }
 
     @GetMapping("/events")
-    public List<Event> getSomeEvents(@RequestParam String eventType, @RequestParam Integer venueID) {
+    public List<EventDTO> getSomeEvents(@RequestParam String eventType, @RequestParam Integer venueID) {
         return eventService.getSomeEvents(eventType, venueID);
     }
+
+    //ALA BASIC
+//    @GetMapping("/events")
+//    public List<Event> getSomeEvents(@RequestParam String eventType, @RequestParam Integer venueID) {
+//        return eventService.getEventsBy(eventType, venueID);
+//    }
+
+
 }

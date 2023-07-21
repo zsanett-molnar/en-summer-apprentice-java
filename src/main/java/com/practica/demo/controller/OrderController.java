@@ -1,6 +1,7 @@
 package com.practica.demo.controller;
 
 import com.practica.demo.entity.Customer;
+import com.practica.demo.entity.GetOrdersDTO;
 import com.practica.demo.entity.Order;
 import com.practica.demo.entity.OrderDTO;
 import com.practica.demo.service.OrderService;
@@ -23,7 +24,7 @@ public class OrderController {
     }
 
     @PostMapping("/order/addNewOrder")
-    public Order insertNewOrder(@RequestBody OrderDTO dto) {
+    public GetOrdersDTO insertNewOrder(@RequestBody OrderDTO dto) {
         return orderService.addOrder(dto);
     }
 
@@ -38,7 +39,7 @@ public class OrderController {
     }
 
     @GetMapping("/order/getOrdersByCustomer")
-    public List<Order> getOrdersByCustomer() {
+    public List<GetOrdersDTO> getOrdersByCustomer() {
         return orderService.getOrderByCustomerID(3);
     }
 }
